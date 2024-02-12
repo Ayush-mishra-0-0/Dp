@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&display=swap">
+    <link rel="stylesheet" href="css/popup.css" type="text/css">
+
+    <script src="popup2.js"></script> <!-- Include popup2.js script -->
+</head>
+
+<body>
+    <div id="popup2" class="popup">
+        <div class="modal-header">
+            <h1>Ecommerce Sevak</h1>
+        </div>
+        <div class="modal-content">
+            <div class="container">
+                <!-- Content for reporting dark patterns -->
+                <p class="label">Report Dark Patterns</p>
+                <p class="number" style="font-size: 25px;">Please provide details about the dark patterns you've encountered:</p>
+
+                <!-- Add your form elements here for reporting dark patterns -->
+                <form id="reportForm" action="/saveFormData" method="post" onsubmit="saveFormData(event)">
+                    <input type="text" id="userInput" name="userInput" placeholder="Enter your text here">
+                    <!-- Accept button -->
+                    <button type="submit" class="accept-button">Report</button>
+                </form>
+                
+                
+                <hr>
+                <a href="popup.html">Back</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        function saveFormData(event) {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+
+    // Get user input from the form
+    var userInput = document.getElementById('userInput').value;
+
+    // Send the form data to the server using fetch
+    fetch('/saveFormData', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ userInput: userInput })
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('Form data saved successfully');
+            // Optionally, display a success message or perform other actions
+        } else {
+            console.error('Failed to save form data');
+            // Optionally, display an error message or perform other actions
+        }
+    })
+    .catch(error => {
+        console.error('Error saving form data:', error);
+        // Optionally, display an error message or perform other actions
+    });
+}
+
+    </script>
+</body>
+
+</html>

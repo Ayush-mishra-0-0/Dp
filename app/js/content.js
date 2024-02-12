@@ -36,7 +36,10 @@ function scrape() {
     .then((resp) => resp.json())
     .then((data) => {
       data = data.replace(/'/g, '"');
+      // console.log("i am ur father");
+      // console.log(data);
       json = JSON.parse(data);
+      // console.log(json);
       let dp_count = 0;
       let element_index = 0;
 
@@ -47,6 +50,7 @@ function scrape() {
         }
 
         if (json.result[i] !== "Not Dark") {
+          // console.log("json.result[i]: " + json.result[i] + " element_index: " + element_index + " text: " + text)
           highlight(elements[element_index], json.result[i]);
           dp_count++;
         }

@@ -1,6 +1,28 @@
 .insite-highlight {
     position: relative;
-    background: #F7E660;
+    background: rgb(225, 37, 87);
+    color: black;
+    /* Set the text color to black */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    /* Add a subtle box shadow for a pop-out effect */
+    font-weight: bold;
+    /* Adjust font weight for emphasis */
+    animation: alertAnimation 0.5s ease-in-out;
+    /* Apply the animation for alert effect */
+}
+
+@keyframes alertAnimation {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 .insite-highlight .insite-highlight-body {
@@ -9,7 +31,7 @@
 
     margin: 0;
   	width: 200px;
-    color: #FFFFFF;
+    color: #ef0d0d;
     background-color: #041F30;
 
 	position: absolute;
@@ -32,7 +54,7 @@
 }
 
 .insite-highlight-body .modal-header h1 {
-    color: #FFFFFF;
+    color: white;
 
     font-size: 16px;
     font-weight: 300;
@@ -43,7 +65,7 @@
     padding: 8px 16px 8px 16px;
     font-size: 12px;
     font-weight: 150;
-    color: #D8D8D8;
+    color: red;
 }
 
 /* Show the tooltip text when you mouse over the tooltip container */

@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "Insite",
+    "name": "Ecommerce Sevak",
     "version": "1.2",
     "description": "Recognize dark patterns in online stores",
     "action": {
