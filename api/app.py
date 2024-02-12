@@ -66,7 +66,6 @@ def main():
     if request.method == 'POST':
         output = []
         data = request.get_json().get('tokens')
-
         for token in data:
             result = presence_classifier.predict(presence_vect.transform([token]))
             if result == 'Dark':
@@ -74,11 +73,11 @@ def main():
                 output.append(cat[0])
             else:
                 output.append(result[0])
-
+            
             # Log the token and classification
-            for i in output:
-               if(i != 'Not Dark'):
-                  logging.info(f"Token: {token}, Classification: {i}")
+            # for i in output:
+            #    if(i != 'Not Dark'):
+            #       logging.info(f"Token: {token}, Classification: {i}")
 
             # Save token and classification to the database
             if(result[0] == 'Dark'): 
@@ -92,6 +91,6 @@ def main():
 
 if __name__ == '__main__':
     with app.app_context():
-        logging.basicConfig(level=logging.INFO)
+        # logging.basicConfig(level=logging.INFO)
         db.create_all()
     app.run(threaded=True, debug=True)

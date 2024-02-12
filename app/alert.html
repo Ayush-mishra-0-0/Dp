@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Alert</title>
+    <style>
+        /* CSS styles for the alert box */
+        .alert {
+            padding: 15px;
+            background-color: #f44336; /* Red background color */
+            color: white; /* White text color */
+            margin-bottom: 15px; /* Add some space between elements */
+            border-radius: 4px; /* Rounded corners */
+            position: relative; /* Position relative for close button positioning */
+            display: none; /* Initially hide the alert box */
+        }
+
+        .close {
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close:hover {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <!-- HTML structure for the alert box -->
+    <div id="alertBox" class="alert">
+        <span id="alertMessage">Success! Your report has been submitted.</span>
+        <span class="close" onclick="closeAlert()">&times;</span>
+    </div>
+
+    <script>
+        // JavaScript function to close the alert box
+        function closeAlert() {
+            var alertBox = document.getElementById("alertBox");
+            alertBox.style.display = "none";
+        }
+
+        // JavaScript function to show the alert box with a custom message
+        function showAlert(message) {
+            var alertBox = document.getElementById("alertBox");
+            var alertMessage = document.getElementById("alertMessage");
+            alertMessage.innerText = message;
+            alertBox.style.display = "block";
+        }
+    </script>
+</body>
+</html>

@@ -9,16 +9,26 @@ const descriptions = {
   "Forced Action": "Forces a user to complete extra, unrelated tasks to do something that should be simple.",
 };
 
+let darkPatternCounts = {
+  "Sneaking": 0,
+  "Urgency": 0,
+  "Misdirection": 0,
+  "Social Proof": 0,
+  "Scarcity": 0,
+  "Obstruction": 0,
+  "Forced Action": 0
+};
+
 function scrape() {
   // website has already been analyzed
-  if (document.getElementById("insite_count")) {
+  if (document.getElementById("count")) {
     return;
   }
 
   // aggregate all DOM elements on the page
   let elements = segments(document.body);
   let filtered_elements = [];
-
+  console.log(elements.length);
   for (let i = 0; i < elements.length; i++) {
     let text = elements[i].innerText.trim().replace(/\t/g, " ");
     if (text.length == 0) {
@@ -26,7 +36,7 @@ function scrape() {
     }
     filtered_elements.push(text);
   }
-
+  // console.log(filtered_elements.length);
   // post to the web server
   fetch(endpoint, {
     method: "POST",
@@ -35,31 +45,47 @@ function scrape() {
   })
     .then((resp) => resp.json())
     .then((data) => {
-      data = data.replace(/'/g, '"');
-      // console.log("i am ur father");
-      // console.log(data);
+      data = data.replace(/'/g, '"'); 
       json = JSON.parse(data);
       // console.log(json);
+      const jsondata = json.result; 
+      // console.log(jsondata.length);
       let dp_count = 0;
       let element_index = 0;
 
-      for (let i = 0; i < elements.length; i++) {
+      // for (let i = 0; i < elements.length; i++) {
+      //   let text = elements[i].innerText.trim().replace(/\t/g, " ");
+      //   if (text.length == 0) {
+      //     continue;
+      //   }
+      //   // console.log("jsondata[i]: " + jsondata[i].label + " element_index: " + element_index + " text: " + text);
+      //   if (jsondata[i].label != "Not Dark Pattern") {
+      //     // console.log("jsondata[i]: " + jsondata[i] + " element_index: " + element_index + " text: " + text)
+      //     highlight(elements[element_index], jsondata[i].label);
+      //     darkPatternCounts[jsondata[i].label] += 1;
+      //     dp_count++;
+      //   }
+      //   element_index++;
+      // }
+      
+      for(let i = 0; i < elements.length; i++) {
         let text = elements[i].innerText.trim().replace(/\t/g, " ");
         if (text.length == 0) {
           continue;
         }
-
-        if (json.result[i] !== "Not Dark") {
-          // console.log("json.result[i]: " + json.result[i] + " element_index: " + element_index + " text: " + text)
-          highlight(elements[element_index], json.result[i]);
+        if(jsondata[i].label != "Not Dark Pattern") {
+          highlight(elements[i], jsondata[i].label);
+          console.log("jsondata[i]: " + jsondata[i].label + " element_index: " + element_index + " text: " + jsondata[i].score)
+          darkPatternCounts[jsondata[i].label] += 1;
           dp_count++;
         }
         element_index++;
       }
+      // console.log(darkPatternCounts);
 
       // store number of dark patterns
       let g = document.createElement("div");
-      g.id = "insite_count";
+      g.id = "count";
       g.value = dp_count;
       g.style.opacity = 0;
       g.style.position = "fixed";
