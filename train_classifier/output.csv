@@ -1,0 +1,17 @@
+Text,Sentiment Label
+"Only 10 Left in Stock - Order Soon!,Unnamed: 1,Text,Sentiment Label,Score",Scarcity
+"""By clicking 'Accept All Cookies,' you agree to our terms and conditions without realizing it."",,,,",Forced Action
+"You can't unsubscribe from our newsletter.,,,,",Misdirection
+"You have to pay for shipping.,,,,",Forced action
+"Hurry! Only 3 items left in stock. Buy now before they're gone!,,,,",Scarcity
+"""To unsubscribe, please click this small text link hidden at the bottom of the email."",,,,",Forced action
+"Join over 1 million satisfied customers who have already signed up for our premium service.,,,,",Obstruction
+"""Exclusive offer! Limited time only: get 50% off your purchase, while supplies last."",,,,",Misdirection
+"""To cancel your subscription, please call our customer service hotline, which is only available during business hours."",,,,",Obstruction
+"""To access this content, you must first complete a survey or share this page on social media."",,,,",Forced action
+Your subscription will automatically renew unless you cancel 30 days prior to the renewal date.,Obstruction
+Click 'OK' to confirm you don't want to save money today.,Misdirection
+"By continuing, you agree to our terms and conditions.",Forced Action
+"Sign up for our newsletter to stay updated on exclusive offers. Not interested? Sure, stay uninformed.",Forced action
+You're just one step away from accessing premium content! Click 'Continue' to subscribe.,Obstruction
+You have 10 new notifications! Click here to view.,Obstruction
